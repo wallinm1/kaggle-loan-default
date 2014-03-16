@@ -40,7 +40,7 @@ def main():
             f1_best=f1
             np.save('features/clf_sel.npy',select)
         print feats,f1,roc_pred,roc_prob
-        if feats>40:
+        if feats>25:
             break
     print "f1_best:", f1_best
     

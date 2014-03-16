@@ -50,7 +50,7 @@ def main():
             mae_best=mae
             np.save('features/reg_sel_quant.npy',select)
         print feats,mae
-        if feats>170:
+        if feats>150:
             break
     print "mae_best:", mae_best
 
