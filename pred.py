@@ -4,7 +4,7 @@ from sklearn.externals import joblib
 
 def main():
     #based on models trained by train.py
-    xtest=np.load('x_test.npy')
+    xtest=np.load('data/x_test.npy')
     #classification features
     sel_clf_feats=np.load('features/clf_sel.npy')
     #regression features
@@ -85,14 +85,21 @@ def main():
     #multiply ensemble loss predictions by class predictions
     ens_losses=np.multiply(ens_mat,class_preds[:,np.newaxis])
     
-    #best ensemblers on the basis of cv
-    good_ens=np.mean(ens_losses[:,(0,2)],1)
+    #best single ensembler on the basis of cv
+    best_ens=ens_losses[:,0]    
+    
+    #mean of the best two ensemblers on the basis of cv
+    mean_ens=np.mean(ens_losses[:,(0,2)],1)
     
     ids=np.load('data/ids.npy')
     
-    predsdf=pd.DataFrame({'id':ids.astype(int),'loss':good_ens})
-    predsdf.to_csv('outputs/loss_preds.csv', index_label=False, index=False)
-    np.save('outputs/loss_preds.npy',good_ens)
+    predsdf=pd.DataFrame({'id':ids.astype(int),'loss':mean_ens})
+    predsdf.to_csv('outputs/mean_ens_preds.csv', index_label=False, index=False)
+    np.save('outputs/mean_ens_preds.npy',mean_ens)
+    
+    predsdf=pd.DataFrame({'id':ids.astype(int),'loss':best_ens})
+    predsdf.to_csv('outputs/best_ens_preds.csv', index_label=False, index=False)
+    np.save('outputs/best_ens_preds.npy',best_ens)
     
 if __name__=="__main__":
     main()
