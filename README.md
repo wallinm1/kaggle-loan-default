@@ -21,4 +21,4 @@ Most scripts were run on a laptop with 4GBs of RAM and a i5-2410M CPU @ 2.30 GHz
 
 Running times:
 
-Despite being RAM-intensive, the read.py scripts runs very quickly (~5 mins). The GBM-feature selector scripts (clf_selector.py, reg_selector_lad_log.py, reg_selector_quant_log.py) run in roughly one hour each on the aforementioned laptop. The SGD-feature selector (reg_selector_sgd_eps_log.py) runs in about 30 mins. The running time for train.py is between one and two hours and the pred.py-script runs in about 15 mins.
+Despite being RAM-intensive, the read.py script runs very quickly (~5 mins). The GBM-feature selector scripts (clf_selector.py, reg_selector_lad_log.py, reg_selector_quant_log.py) run in roughly one hour each on the aforementioned laptop. The SGD-feature selector (reg_selector_sgd_eps_log.py) runs in about 30 mins. The running time for train.py is between one and two hours and the pred.py-script runs in about 15 mins.
